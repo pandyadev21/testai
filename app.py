@@ -9,8 +9,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 app = Flask(__name__)
 
 # Load the data
-df1 = pd.read_excel('D:\\Best project\\v1\\lawai\\laws.xlsx')
-df2 = pd.read_excel('D:\\Best project\\v1\\lawai\\laws2.xlsx')
+df1 = pd.read_excel('laws.xlsx')
+df2 = pd.read_excel('laws2.xlsx')
 # Add more dataframes for additional databases (laws3.xlsx, laws4.xlsx, etc.)
 
 # Preprocess Data
