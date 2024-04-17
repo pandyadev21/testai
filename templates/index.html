@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000000 0%, #000000 100%);
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Prevents scrollbars */
+        }
+
+        .background-circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            filter: blur(10px);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative; /* Makes .container a reference for .background-circle position */
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            max-width: 500px;
+            width: 90%;
+            z-index: 1; /* Ensures form is above the background circle */
+        }
+
+        .form-container h1, .form-container p, .form-container form {
+            margin: 0;
+            padding: 10px 0;
+            text-align: center;
+            color: #333;
+        }
+
+        input[type="text"], button[type="submit"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            display: block;
+            cursor: pointer;
+            color: white;
+            margin: 0 auto;
+            position: relative;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 6px;
+            overflow: hidden;
+            padding: 3px;
+            isolation: isolate;
+            background-color: #2575fc; /* Fallback Background */
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400%;
+            height: 100%;
+            background: linear-gradient(115deg,#4fcf70,#fad648,#a767e5,#12bcfe,#44ce7b);
+            background-size: 25% 100%;
+            animation: moveBackground .75s linear infinite;
+            animation-play-state: paused;
+            translate: -5% 0%;
+            transition: translate 0.25s ease-out;
+        }
+
+        button[type="submit"]:hover::before, button[type="submit"]:hover {
+            animation-play-state: running;
+            transition-duration: 0.75s;
+            translate: 0% 0%;
+            background-color: #195adb; /* Ensures the button changes color on hover */
+        }
+
+        @keyframes moveBackground {
+            to {
+                transform: translateX(-25%);
+            }
+        }
+
+        button[type="submit"] span {
+            position: relative;
+            display: block;
+            padding: 0.6rem 1.3rem;
+            font-size: 1.1rem;
+            background: #000000db;
+            color: #fff; /* Ensures text color is white for visibility */
+            border-radius: 3px;
+            height: 100%;
+        }
+        .cont {
+ display: flex;
+ align-items: center;
+ transform: scale(1);
+}
+
+input[type="checkbox"] {
+ height: 1.4rem;
+ width: 1.4rem;
+ margin: 5px;
+ display: inline-block;
+ appearance: none;
+ position: relative;
+ background-color: #F2ECFF;
+ border-radius: 15%;
+ cursor: pointer;
+ overflow: hidden;
+}
+
+input[type="checkbox"]::after {
+    content: '';
+    display: block;
+    height: 0.6rem;
+    width: .3rem;
+    border-bottom: .21rem solid #a0ffe7;
+    border-right: .21rem solid #a0ffe7;
+    opacity: 0;
+    transform: rotate(45deg) translate(-50%, -50%);
+    position: absolute;
+    top: 45%;
+    left: 21%;
+    transition: .25s ease;
+}
+
+input[type="checkbox"]::before {
+ content: '';
+ display: block;
+ height: 0;
+ width: 0;
+ background-color: #00C896;
+ border-radius: 50%;
+ opacity: .5;
+ transform: translate(-50%, -50%);
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transition: .3s ease;
+}
+
+input[type="checkbox"]:checked::before {
+ height: 130%;
+ width: 130%;
+ opacity: 100%;
+}
+
+input[type="checkbox"]:checked::after {
+ opacity: 100%;
+}
+
+span {
+ font-size: 2rem;
+}        
+    </style>
+</head>
+<body>
+    <div class="background-circle"></div> <!-- Add this for the blurred circle -->
+    <div class="container">
+        <div class="form-container">
+            <h1>Welcome</h1>
+            <form action="/result" method="POST">
+                <input type="text" name="incident" placeholder="Describe the incident..."><br><br>
+                <div style="display: flex; justify-content: space-between;">
+                    <label class="cont"><input type="checkbox" checked="" name="CB1"><span></span> CB 1</label>
+                    <label class="cont"><input type="checkbox" name="CB2"><span></span> CB 2</label>
+                    <label class="cont"><input type="checkbox" name="CB3"><span></span> CB 3</label>
+                    <label class="cont"><input type="checkbox" name="CB4"><span></span> CB 4</label>
+                </div>
+                <br>
+                <button type="submit"><span>SUBMIT</span></button> <!-- Added span for styling -->
+            </form>
+        </div>
+    </div>    
+</body>
+</html>
